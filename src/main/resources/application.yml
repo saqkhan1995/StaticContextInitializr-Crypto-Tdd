@@ -1,0 +1,51 @@
+server.port : 8082
+
+#Info
+info.component: Sample Microservice V1
+
+---
+spring.config.activate.on-profile: dev   #-Dspring.profiles.active=dev
+
+common:
+  testType: service
+  host: https://some-random-host-url
+  client-id: sample-client-id
+  path:
+    endpoint-sampleA: /sample1  #Can also use camel-case.. same thing.. ex.endpointSampleA: /sample1
+    endpoint-sampleB: /sample1
+    endpoint-sampleC: /sample1
+  auth-headers:
+    content-type: application/json
+    accept: application/json
+    client-id: ${CLIENTID:default_client_id if not specified at runtime env var}
+
+credentials:
+  userId: ${USERID:1234567}
+  password: ${PASSWORD:1234567}
+  externalCredentials:
+    sampleA:
+      username: 123456
+      password: 123456
+    sampleB:
+      username: 123456
+      password: 123456
+
+
+aggregator:
+  entities:
+    entity1: entity1
+    entity2: entity2
+    entity3: entity3
+    entity4: entity4
+  entityDetails:
+    - details1
+    - details2
+    - details3
+  extra-entityDetails:
+    Entity1:
+      - details1
+      - details2
+      - details3
+    Entity2:
+      - details1
+      - details2
